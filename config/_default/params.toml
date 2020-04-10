@@ -87,7 +87,7 @@ email = "jojo.abalos@uap.asia"
 
 # Address
 # For country_code, use the 2-letter ISO code (see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 )
-address = {street = "Pear Drive, Ortigas Center", city = "Pasig City", region = "NCR", postcode = "1600", country = "Philippines", country_code = "PH"}
+address = {street = "University of Asia and the Pacific, Pearl Drive, Ortigas Center", city = "Pasig City", region = "NCR", postcode = "1600", country = "Philippines", country_code = "PH"}
 
 # Geographic coordinates
 # To get your coordinates, right-click on Google Maps and choose "What's here?". The coords will show up at the bottom.
@@ -209,14 +209,14 @@ plugins_js  = []
   #   0: Disabled
   #   1: Disqus (https://disqus.com)
   #   2: Commento (https://commento.io)
-  engine = 0
+  engine = 1
 
   # Which page types are commentable?
   commentable = {page = true, post = true, docs = true, project = true, publication = true, talk = true}
 
   # Configuration of Disqus.
   [comments.disqus]
-    shortname = ""  # Paste the shortname from your Disqus dashboard.
+    shortname = "jojoabalos-me"  # Paste the shortname from your Disqus dashboard.
     show_count = true  # Show comment count in page header? (true/false)
 
   # Configuration of Commento.
