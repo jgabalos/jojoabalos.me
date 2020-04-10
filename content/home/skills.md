@@ -18,18 +18,25 @@ subtitle = ""
   icon = "r-project"
   icon_pack = "fab"
   name = "R"
-  description = "75%"
+  description = "Intermediate"
   
 [[feature]]
   icon = "chart-line"
   icon_pack = "fas"
   name = "Statistics"
-  description = "75%"  
+  description = "Intermediate "  
+
+[[feature]]
+  icon = "coins"
+  icon_pack = "fas"
+  name = "Applied Econometrics"
+  description = "Intermediate"  
+
   
 [[feature]]
   icon = "mug-hot"
   icon_pack = "fas"
   name = "Coffee"
-  description = "100%"
+  description = "Extreme"
 
 +++
