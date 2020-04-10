@@ -24,19 +24,18 @@ subtitle = ""
   icon = "chart-line"
   icon_pack = "fas"
   name = "Statistics"
-  description = "Intermediate "  
+  description = "Intermediate"  
 
 [[feature]]
   icon = "coins"
   icon_pack = "fas"
   name = "Applied Econometrics"
   description = "Intermediate"  
-
   
 [[feature]]
   icon = "mug-hot"
   icon_pack = "fas"
   name = "Coffee"
   description = "Extreme"
-
 +++
+

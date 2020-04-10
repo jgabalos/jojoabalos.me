@@ -2,7 +2,6 @@
 authors:
 - admin
 bio: My research interests include data analytics, statistics, and applied econometrics using R.
-  matter.
 education:
   courses:
   - course: Master in Applied Business Economics
@@ -44,7 +43,7 @@ user_groups:
 - Visitors
 ---
 
-Jonathan G. Abalos is a part-time faculty of University of Asia and the Pacific. Jojo introduced R to enhance course content and delivery of Business Economics Statistical Techniques and Applied Econometrics under the Master in Applied Business Economics Program under the School of Economics.
+Jonathan G. Abalos is a part-time faculty of University of Asia and the Pacific. He introduced R to enhance course content and delivery of Business Economics Statistical Techniques and Applied Econometrics under the Master in Applied Business Economics Program under the School of Economics.
 
 
 
