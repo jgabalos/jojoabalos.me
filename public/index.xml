@@ -84,9 +84,9 @@
       <description>&lt;p&gt;I came across this twitter post from 
 &lt;a href=&#34;https://twitter.com/dsquintana?s=20&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@dsquintana&lt;/a&gt; and this encouraged me to make this personal static website.&lt;/p&gt;
 &lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;📝🖥 &amp;quot;How to make a free personal website in R&amp;quot;&lt;br&gt;&lt;br&gt;👤 Dan Quintana &lt;a href=&#34;https://twitter.com/dsquintana?ref_src=twsrc%5Etfw&#34;&gt;@dsquintana&lt;/a&gt;&lt;a href=&#34;https://t.co/YfWLI0RLvj&#34;&gt;https://t.co/YfWLI0RLvj&lt;/a&gt;&lt;a href=&#34;https://twitter.com/hashtag/rstats?src=hash&amp;amp;ref_src=twsrc%5Etfw&#34;&gt;#rstats&lt;/a&gt; &lt;a href=&#34;https://t.co/x8uNbXaGEr&#34;&gt;pic.twitter.com/x8uNbXaGEr&lt;/a&gt;&lt;/p&gt;&amp;mdash; R posts you might have missed! (@icymi_r) &lt;a href=&#34;https://twitter.com/icymi_r/status/1246295506495700996?ref_src=twsrc%5Etfw&#34;&gt;April 4, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt; 
-&lt;p&gt;I have tinkered a bit using the &lt;code&gt;blogdown&lt;/code&gt; r package authored by 
-&lt;a href=&#34;https://twitter.com/xieyihui?s=20&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@xieyihui&lt;/a&gt; awhile back when I watched his webinar vid. I got reunited to this, and now was able to have a complete setup using R Studio, Blogdown, Github, Netlify and Namecheap.&lt;/p&gt;
-&lt;p&gt;Also, am quite happy to have successfully implemented the continuous deployment from Github configuration in Netlify after a bit of some struggle.&lt;/p&gt;
+&lt;p&gt;I have tinkered quite a bit on &lt;code&gt;blogdown&lt;/code&gt; r package authored by 
+&lt;a href=&#34;https://twitter.com/xieyihui?s=20&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@xieyihui&lt;/a&gt; awhile back when I watched his webinar vid. I got reunited to this recently, and now was able to have a complete setup using R Studio, Blogdown, Github, Netlify and Namecheap.&lt;/p&gt;
+&lt;p&gt;After some few struggles, I am quite happy to have successfully configured the continuous deployment from Github in Netlify.&lt;/p&gt;
 &lt;p&gt;Here are the key steps that I took to help me bring this site up.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -107,20 +107,39 @@
 &lt;a href=&#34;https://www.netlify.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Netlify&lt;/a&gt; where you can host your website.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;In case you are a student in an accredited university, you can apply for a free academic domain &lt;yourname&gt;.me in 
+&lt;p&gt;In case you are a student in an accredited university, you can apply for a free academic domain &lt;code&gt;yourname.me&lt;/code&gt; in 
 &lt;a href=&#34;https://www.namecheap.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Namecheap&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Link your Netlify hosted website to your domain in namecheap.&lt;/p&gt;
+&lt;p&gt;Link your Netlify hosted website to your domain in Namecheap.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Create a Github account and load your blogdown project files.&lt;/p&gt;
+&lt;p&gt;Create a Github account and upload your blogdown project files to a new repository.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Setup continuous deployment setting from git repository in Netlify.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;em&gt;Note: I intend to update this post with the specifics on each of the steps for reference.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: I intend to update this post with the specifics on each of the steps for reference. Meantime, let me know if you need some more details in any of the above steps&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Screen Recording With OBS</title>
+      <link>/post/screen-recording-with-obs/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/screen-recording-with-obs/</guid>
+      <description>
+
+
+&lt;p&gt;As I was on the lookout for a software that I can do a screen recording, i came across Open Broadcaster Software (OBS). It was quite interesting that during my initial recording trial I can’t seem to capture my screen on video. After a few minutes of puzzlement and frustration, I am ready to give up on OBS as I can’t seem to record my screen.&lt;/p&gt;
+&lt;p&gt;I later found out that there is a &lt;em&gt;black screen issue during screen capture&lt;/em&gt; lingering in the google results pages. After a few articles and videos scanned, this was the video that sealed that deal. What at first turned out to be a difficult software to work on, I now realize why OBS is one of the most popular software out there for this kind of job, post &lt;em&gt;black screen&lt;/em&gt; era.&lt;/p&gt;
+&lt;p&gt;Special thanks to &lt;a href=&#34;https://www.youtube.com/channel/UCNSjGve-Zn1t4CLXAtL3jeQ/about&#34;&gt;thyQuis&lt;/a&gt; for this helpful video.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/oif_q1Ywe3Q&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
 </description>
     </item>
     

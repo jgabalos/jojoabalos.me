@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Screen Recording | Jojo Abalos</title>
+    <link>/tags/screen-recording/</link>
+      <atom:link href="/tags/screen-recording/index.xml" rel="self" type="application/rss+xml" />
+    <description>Screen Recording</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 10 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Screen Recording</title>
+      <link>/tags/screen-recording/</link>
+    </image>
+    
+    <item>
+      <title>Screen Recording With OBS</title>
+      <link>/post/screen-recording-with-obs/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/screen-recording-with-obs/</guid>
+      <description>
+
+
+&lt;p&gt;As I was on the lookout for a software that I can do a screen recording, i came across Open Broadcaster Software (OBS). It was quite interesting that during my initial recording trial I can’t seem to capture my screen on video. After a few minutes of puzzlement and frustration, I am ready to give up on OBS as I can’t seem to record my screen.&lt;/p&gt;
+&lt;p&gt;I later found out that there is a &lt;em&gt;black screen issue during screen capture&lt;/em&gt; lingering in the google results pages. After a few articles and videos scanned, this was the video that sealed that deal. What at first turned out to be a difficult software to work on, I now realize why OBS is one of the most popular software out there for this kind of job, post &lt;em&gt;black screen&lt;/em&gt; era.&lt;/p&gt;
+&lt;p&gt;Special thanks to &lt;a href=&#34;https://www.youtube.com/channel/UCNSjGve-Zn1t4CLXAtL3jeQ/about&#34;&gt;thyQuis&lt;/a&gt; for this helpful video.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/oif_q1Ywe3Q&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

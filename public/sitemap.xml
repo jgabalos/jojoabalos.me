@@ -39,7 +39,12 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-04-10T14:37:08+08:00</lastmod>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/cool-tools/</loc>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
   </url>
   
   <url>
@@ -63,8 +68,23 @@
   </url>
   
   <url>
+    <loc>/tags/obs/</loc>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/obs-studio/</loc>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/open-broadcaster-software/</loc>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/</loc>
-    <lastmod>2020-04-10T14:37:08+08:00</lastmod>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
   </url>
   
   <url>
@@ -83,8 +103,23 @@
   </url>
   
   <url>
+    <loc>/tags/screen-recording/</loc>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/screen-recording-with-obs/</loc>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
-    <lastmod>2020-04-10T14:37:08+08:00</lastmod>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/video-recording/</loc>
+    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
   </url>
   
   <url>
