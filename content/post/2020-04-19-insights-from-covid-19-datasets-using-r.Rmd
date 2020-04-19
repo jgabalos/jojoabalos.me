@@ -1,5 +1,5 @@
 ---
-title: insights from COVID-19 Datasets Using R
+title: Insights from COVID-19 Datasets Using R
 author: Jojo Abalos
 date: '2020-04-19'
 slug: insights-from-covid-19-datasets-using-r
@@ -53,6 +53,8 @@ p1 <- ggplot(ECDC.COVID19.PH) +
  geom_smooth(span = 0.5) + 
  scale_fill_hue() +
  scale_color_hue() +
+ labs(x = "Date", y = "Cumulative Cases Per Day", title = "COVID-19 CUMULATIVE CASES PER DAY - PHILIPPINES", 
+      subtitle = "As of 2020-Apr-18", caption = "Data Source: European Centre for Disease Prevention and Control (ECDC)") + 
  theme_minimal() +
  theme_pander(bc="honeydew")
 
@@ -62,11 +64,23 @@ p2 <- ggplot(ECDC.COVID19.PH) +
  geom_smooth(span = 0.5) + 
  scale_fill_hue() +
  scale_color_hue() +
+ labs(x = "Date", y = "New Cases Per Day", title = "COVID-19 NEW CASES PER DAY - PHILIPPINES",
+      subtitle = "As of 2020-Apr-18", caption = "Data Source: European Centre for Disease Prevention and Control (ECDC)") + 
  theme_minimal() +
  theme_pander(bc="honeydew")
 ```
 
-```{r fig.height=4, fig.width=12}
+```{r message=FALSE}
+library(plotly)
+par(mfrow=c(2,1))
+ggplotly(p1)
+ggplotly(p2)
+par(mfrow=c(1,1))
+```
+
+
+```{r message=FALSE, fig.height=4, fig.width=12}
 library(cowplot)
+library(plotly)
 plot_grid(p1,p2,labels = "AUTO")
 ```
