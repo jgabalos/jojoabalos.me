@@ -1,0 +1,72 @@
+---
+title: insights from COVID-19 Datasets Using R
+author: Jojo Abalos
+date: '2020-04-19'
+slug: insights-from-covid-19-datasets-using-r
+categories:
+  - R
+tags:
+  - R
+  - R Studio
+  - COVID-19
+  - COVID
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-04-19T16:39:06+08:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+Import Dataset From European Centre for Disease Prevention and Control (ECDC)
+```{r}
+#these libraries need to be loaded
+library(utils)
+
+#read the Dataset sheet into “R”. The dataset will be called "data".
+ECDC.COVID19 <- read.csv("https://opendata.ecdc.europa.eu/covid19/casedistribution/csv", na.strings = "", fileEncoding = "UTF-8-BOM")
+```
+
+```{r}
+library(tidyverse)
+ECDC.COVID19$dateRep <- as.Date(ECDC.COVID19$dateRep, format = "%d/%m/%Y")
+ECDC.COVID19.PH <- ECDC.COVID19 %>% 
+# filter(geoId %in% c("PH","SE","IS","FI","DE","TW")) %>%
+  filter(geoId %in% c("PH")) %>%
+  arrange(geoId,dateRep) %>%   
+  group_by(geoId) %>% 
+  mutate(cum_cases = cumsum(cases),
+         cum_deaths= cumsum(deaths)) %>% 
+  mutate(fatality_rate = cum_deaths/cum_cases*100,
+         cases_rate = cum_cases/popData2018*1000000) 
+```
+
+```{r}
+library(ggthemes)
+p1 <- ggplot(ECDC.COVID19.PH) +
+ aes(x = dateRep, y = cum_cases, fill = geoId, colour = geoId) +
+ geom_line(size = 1L) +
+ geom_smooth(span = 0.5) + 
+ scale_fill_hue() +
+ scale_color_hue() +
+ theme_minimal() +
+ theme_pander(bc="honeydew")
+
+p2 <- ggplot(ECDC.COVID19.PH) +
+ aes(x = dateRep, y = cases, fill = geoId, colour = geoId) +
+ geom_line(size = 1L) +
+ geom_smooth(span = 0.5) + 
+ scale_fill_hue() +
+ scale_color_hue() +
+ theme_minimal() +
+ theme_pander(bc="honeydew")
+```
+
+```{r fig.height=4, fig.width=12}
+library(cowplot)
+plot_grid(p1,p2,labels = "AUTO")
+```

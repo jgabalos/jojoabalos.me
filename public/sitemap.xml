@@ -33,13 +33,53 @@
   </url>
   
   <url>
-    <loc>/tags/blogdown/</loc>
-    <lastmod>2020-04-10T14:37:08+08:00</lastmod>
+    <loc>/categories/</loc>
+    <lastmod>2020-04-19T16:39:06+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
-    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
+    <loc>/tags/covid/</loc>
+    <lastmod>2020-04-19T16:39:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/covid-19/</loc>
+    <lastmod>2020-04-19T16:39:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/insights-from-covid-19-datasets-using-r/</loc>
+    <lastmod>2020-04-19T16:39:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-04-19T16:39:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2020-04-19T16:39:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/r/</loc>
+    <lastmod>2020-04-19T16:39:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r-studio/</loc>
+    <lastmod>2020-04-19T16:39:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-04-19T16:39:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/blogdown/</loc>
+    <lastmod>2020-04-10T14:37:08+08:00</lastmod>
   </url>
   
   <url>
@@ -83,37 +123,12 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2020-04-10T14:37:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2020-04-10T14:37:08+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r-studio/</loc>
-    <lastmod>2020-04-10T14:37:08+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/screen-recording/</loc>
     <lastmod>2020-04-10T23:01:13+08:00</lastmod>
   </url>
   
   <url>
     <loc>/post/screen-recording-with-obs/</loc>
-    <lastmod>2020-04-10T23:01:13+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-04-10T23:01:13+08:00</lastmod>
   </url>
   

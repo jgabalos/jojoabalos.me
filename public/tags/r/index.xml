@@ -5,12 +5,83 @@
     <link>/tags/r/</link>
       <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     <description>R</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 10 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 19 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>R</title>
       <link>/tags/r/</link>
     </image>
+    
+    <item>
+      <title>insights from COVID-19 Datasets Using R</title>
+      <link>/post/insights-from-covid-19-datasets-using-r/</link>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/insights-from-covid-19-datasets-using-r/</guid>
+      <description>
+
+
+&lt;p&gt;Import Dataset From European Centre for Disease Prevention and Control (ECDC)&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#these libraries need to be loaded
+library(utils)
+
+#read the Dataset sheet into “R”. The dataset will be called &amp;quot;data&amp;quot;.
+ECDC.COVID19 &amp;lt;- read.csv(&amp;quot;https://opendata.ecdc.europa.eu/covid19/casedistribution/csv&amp;quot;, na.strings = &amp;quot;&amp;quot;, fileEncoding = &amp;quot;UTF-8-BOM&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Attaching packages -------------------------------------------- tidyverse 1.3.0 --&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## v ggplot2 3.3.0     v purrr   0.3.3
+## v tibble  3.0.0     v dplyr   0.8.5
+## v tidyr   1.0.2     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## -- Conflicts ----------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ECDC.COVID19$dateRep &amp;lt;- as.Date(ECDC.COVID19$dateRep, format = &amp;quot;%d/%m/%Y&amp;quot;)
+ECDC.COVID19.PH &amp;lt;- ECDC.COVID19 %&amp;gt;% 
+# filter(geoId %in% c(&amp;quot;PH&amp;quot;,&amp;quot;SE&amp;quot;,&amp;quot;IS&amp;quot;,&amp;quot;FI&amp;quot;,&amp;quot;DE&amp;quot;,&amp;quot;TW&amp;quot;)) %&amp;gt;%
+  filter(geoId %in% c(&amp;quot;PH&amp;quot;)) %&amp;gt;%
+  arrange(geoId,dateRep) %&amp;gt;%   
+  group_by(geoId) %&amp;gt;% 
+  mutate(cum_cases = cumsum(cases),
+         cum_deaths= cumsum(deaths)) %&amp;gt;% 
+  mutate(fatality_rate = cum_deaths/cum_cases*100,
+         cases_rate = cum_cases/popData2018*1000000) &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggthemes)
+p1 &amp;lt;- ggplot(ECDC.COVID19.PH) +
+ aes(x = dateRep, y = cum_cases, fill = geoId, colour = geoId) +
+ geom_line(size = 1L) +
+ geom_smooth(span = 0.5) + 
+ scale_fill_hue() +
+ scale_color_hue() +
+ theme_minimal() +
+ theme_pander(bc=&amp;quot;honeydew&amp;quot;)
+
+p2 &amp;lt;- ggplot(ECDC.COVID19.PH) +
+ aes(x = dateRep, y = cases, fill = geoId, colour = geoId) +
+ geom_line(size = 1L) +
+ geom_smooth(span = 0.5) + 
+ scale_fill_hue() +
+ scale_color_hue() +
+ theme_minimal() +
+ theme_pander(bc=&amp;quot;honeydew&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(cowplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## ********************************************************&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Note: As of version 1.0.0, cowplot does not change the&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   default ggplot2 theme anymore. To recover the previous&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   behavior, execute:
+##   theme_set(theme_cowplot())&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ********************************************************&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;cowplot&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following object is masked from &amp;#39;package:ggthemes&amp;#39;:
+## 
+##     theme_map&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot_grid(p1,p2,labels = &amp;quot;AUTO&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-19-insights-from-covid-19-datasets-using-r_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;1152&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Creating My First Website Using R</title>
