@@ -36,7 +36,7 @@ library(tidyverse)
 ECDC.COVID19$dateRep <- as.Date(ECDC.COVID19$dateRep, format = "%d/%m/%Y")
 ECDC.COVID19.PH <- ECDC.COVID19 %>% 
 # filter(geoId %in% c("PH","SE","IS","FI","DE","TW")) %>%
-  filter(geoId %in% c("PH")) %>%
+  filter(geoId %in% c("PH","SG","ID","MY","TH")) %>%
   arrange(geoId,dateRep) %>%   
   group_by(geoId) %>% 
   mutate(cum_cases = cumsum(cases),
