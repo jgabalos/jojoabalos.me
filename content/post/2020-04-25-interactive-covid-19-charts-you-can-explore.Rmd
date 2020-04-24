@@ -13,7 +13,7 @@ tags:
   - R
   - R Studio
 slug: interactive-covid19-charts-you-can-explore
-lastmod: '2020-04-10T23:01:13+08:00'
+lastmod: '2020-04-25T23:01:13+08:00'
 featured: no
 image:
   caption: ''
