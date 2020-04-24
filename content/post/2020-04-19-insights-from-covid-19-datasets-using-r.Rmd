@@ -22,7 +22,7 @@ image:
 projects: []
 ---
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE,warning=FALSE}
 # these libraries need to be loaded
 library(utils)
 library(tidyverse)
@@ -59,6 +59,8 @@ JHU.TOP12.SMRY <- JHU %>%
          RecoveryRatePct = Recovered/Confirmed*100) 
 ```
 
+***
+
 ```{r echo=FALSE}
 p1 <- ggplot(JHU.TOP12.SMRY) +
  aes(x = Date, y = Confirmed, fill = Country, colour = Country) +
@@ -71,7 +73,9 @@ p1 <- ggplot(JHU.TOP12.SMRY) +
  theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
 ```
 
-```{r message=FALSE, echo=FALSE}
+
+
+```{r fig.width=4, fig.height=8, message=FALSE, echo=FALSE}
 plotly::ggplotly(p1) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
@@ -79,6 +83,8 @@ plotly::ggplotly(p1) %>%
                                     'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
                                     '</sup>')))
 ```
+
+****
 
 ```{r echo=FALSE}
 p2 <- ggplot(JHU.TOP12.SMRY) +
@@ -94,7 +100,7 @@ p2 <- ggplot(JHU.TOP12.SMRY) +
 ```
 
 
-```{r echo=FALSE}
+```{r fig.width=6, fig.height=8, message=FALSE, echo=FALSE}
 plotly::ggplotly(p2) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
@@ -103,7 +109,7 @@ plotly::ggplotly(p2) %>%
                                     '</sup>')))
 ```
 
-
+***
 
 ```{r echo=FALSE}
 p3 <- ggplot(JHU.TOP12.SMRY) +
@@ -117,7 +123,7 @@ p3 <- ggplot(JHU.TOP12.SMRY) +
  theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
 ```
 
-```{r message=FALSE, echo=FALSE}
+```{r fig.width=4, fig.height=8, message=FALSE, echo=FALSE}
 plotly::ggplotly(p3) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
@@ -125,6 +131,8 @@ plotly::ggplotly(p3) %>%
                                     'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
                                     '</sup>')))
 ```
+
+***
 
 ```{r echo=FALSE}
 p4 <- ggplot(JHU.TOP12.SMRY) +
@@ -140,7 +148,7 @@ p4 <- ggplot(JHU.TOP12.SMRY) +
 ```
 
 
-```{r echo=FALSE}
+```{r fig.width=6, fig.height=8, message=FALSE, echo=FALSE}
 plotly::ggplotly(p4) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
@@ -149,6 +157,6 @@ plotly::ggplotly(p4) %>%
                                     '</sup>')))
 ```
 
-
+***
 
 
