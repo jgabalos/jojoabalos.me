@@ -22,7 +22,7 @@ image:
 projects: []
 ---
 
-```{r}
+```{r echo=FALSE}
 # these libraries need to be loaded
 library(utils)
 library(tidyverse)
@@ -69,8 +69,18 @@ p1 <- ggplot(JHU.TOP12.SMRY) +
  scale_color_hue() +
  theme_pander(bc="snow2") +
  theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
+```
 
+```{r message=FALSE, echo=FALSE}
+plotly::ggplotly(p1) %>%
+  layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
+                                    '<br>',
+                                    '<sup>',
+                                    'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
+                                    '</sup>')))
+```
 
+```{r echo=FALSE}
 p2 <- ggplot(JHU.TOP12.SMRY) +
  aes(x = Date, y = Confirmed, fill = Country, colour = Country) +
  facet_wrap(vars(Country)) + 
@@ -83,13 +93,8 @@ p2 <- ggplot(JHU.TOP12.SMRY) +
  theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
 ```
 
-```{r fig.height=6, fig.width=9.5, message=FALSE, echo=FALSE}
-plotly::ggplotly(p1) %>%
-  layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
-                                    '<br>',
-                                    '<sup>',
-                                    'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
-                                    '</sup>')))
+
+```{r echo=FALSE}
 plotly::ggplotly(p2) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
@@ -99,7 +104,8 @@ plotly::ggplotly(p2) %>%
 ```
 
 
-```{r fig.height=8, fig.width=12, echo=FALSE}
+
+```{r echo=FALSE}
 p3 <- ggplot(JHU.TOP12.SMRY) +
  aes(x = Date, y = ConfirmedPerDay, fill = Country, colour = Country) +
  labs(x = "", y="", title = "Covid-19 Top 12 Countries by Confirmed Cases Per Day", subtitle = "Jojo Abalos", 
@@ -109,7 +115,18 @@ p3 <- ggplot(JHU.TOP12.SMRY) +
  scale_color_hue() +
  theme_pander(bc="snow2") +
  theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
+```
 
+```{r message=FALSE, echo=FALSE}
+plotly::ggplotly(p3) %>%
+  layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
+                                    '<br>',
+                                    '<sup>',
+                                    'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
+                                    '</sup>')))
+```
+
+```{r echo=FALSE}
 p4 <- ggplot(JHU.TOP12.SMRY) +
  aes(x = Date, y = ConfirmedPerDay, fill = Country, colour = Country) +
  facet_wrap(vars(Country)) + 
@@ -122,13 +139,8 @@ p4 <- ggplot(JHU.TOP12.SMRY) +
  theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
 ```
 
-```{r fig.height=6, fig.width=9.5, message=FALSE, echo=FALSE}
-plotly::ggplotly(p3) %>%
-  layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
-                                    '<br>',
-                                    '<sup>',
-                                    'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
-                                    '</sup>')))
+
+```{r echo=FALSE}
 plotly::ggplotly(p4) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
@@ -136,6 +148,7 @@ plotly::ggplotly(p4) %>%
                                     'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
                                     '</sup>')))
 ```
+
 
 
 
