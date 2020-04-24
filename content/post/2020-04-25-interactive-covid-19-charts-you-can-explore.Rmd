@@ -1,28 +1,24 @@
 ---
-title: Interactive COVID 19 Charts You Can Explore
+title: Interactive COVID19 Charts You Can Explore
 author: Jojo Abalos
 date: '2020-04-25'
-slug: interactive-covid-19-charts-you-can-explore
 categories:
   - R
 tags:
   - COVID
-  - COVID-19
+  - COVID19
   - ggplot2
   - ggplotly
   - Plotly
   - R
   - R Studio
-subtitle: ''
-summary: ''
-authors: []
+slug: interactive-covid19-charts-you-can-explore
 lastmod: '2020-04-10T23:01:13+08:00'
 featured: no
 image:
   caption: ''
   focal_point: ''
   preview_only: no
-projects: []  
 ---
 
 ***
