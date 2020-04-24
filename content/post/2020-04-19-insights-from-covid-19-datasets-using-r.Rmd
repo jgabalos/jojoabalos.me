@@ -22,65 +22,120 @@ image:
 projects: []
 ---
 
-Import Dataset From European Centre for Disease Prevention and Control (ECDC)
 ```{r}
-#these libraries need to be loaded
+# these libraries need to be loaded
 library(utils)
-
-#read the Dataset sheet into “R”. The dataset will be called "data".
-ECDC.COVID19 <- read.csv("https://opendata.ecdc.europa.eu/covid19/casedistribution/csv", na.strings = "", fileEncoding = "UTF-8-BOM")
-```
-
-```{r}
 library(tidyverse)
-ECDC.COVID19$dateRep <- as.Date(ECDC.COVID19$dateRep, format = "%d/%m/%Y")
-ECDC.COVID19.PH <- ECDC.COVID19 %>% 
-# filter(geoId %in% c("PH","SE","IS","FI","DE","TW")) %>%
-  filter(geoId %in% c("PH","SG","ID","MY","TH")) %>%
-  arrange(geoId,dateRep) %>%   
-  group_by(geoId) %>% 
-  mutate(cum_cases = cumsum(cases),
-         cum_deaths= cumsum(deaths)) %>% 
-  mutate(fatality_rate = cum_deaths/cum_cases*100,
-         cases_rate = cum_cases/popData2018*1000000) 
-```
-
-```{r}
 library(ggthemes)
-p1 <- ggplot(ECDC.COVID19.PH) +
- aes(x = dateRep, y = cum_cases, fill = geoId, colour = geoId) +
- geom_line(size = 1L) +
- geom_smooth(span = 0.5) + 
+library(plotly)
+```
+
+
+```{r echo=FALSE}
+# read the Dataset sheet into “R”. The dataset will be called "data".
+ECDC <- read.csv("https://opendata.ecdc.europa.eu/covid19/casedistribution/csv", na.strings = "", fileEncoding = "UTF-8-BOM")
+JHU <- read.csv("https://raw.githubusercontent.com/datasets/covid-19/master/data/countries-aggregated.csv",na.strings = "", fileEncoding = "UTF-8-BOM")
+
+# reformat date column
+ECDC$dateRep <- as.Date(ECDC$dateRep, format = "%d/%m/%Y")
+JHU$Date <- as.Date(JHU$Date)
+```
+
+
+
+```{r echo=FALSE}
+JHU.TOP12 <- JHU %>%
+  filter(Date == max(Date)) %>% 
+  arrange(desc(Confirmed)) %>%   
+  top_n(n=12,wt=Confirmed)
+
+JHU.TOP12.SMRY <- JHU %>% 
+  filter(Country %in% JHU.TOP12$Country) %>%
+  group_by(Country) %>% 
+  mutate(ConfirmedPerDay = Confirmed-lag(Confirmed,default = 0),
+         RecoveredPerDay = Recovered-lag(Recovered,default = 0),
+         DeathsPerDay = Deaths-lag(Deaths,default = 0)) %>% 
+  mutate(FatalityRatePct = Deaths/Confirmed*100,
+         RecoveryRatePct = Recovered/Confirmed*100) 
+```
+
+```{r echo=FALSE}
+p1 <- ggplot(JHU.TOP12.SMRY) +
+ aes(x = Date, y = Confirmed, fill = Country, colour = Country) +
+ labs(x = "", y = "", title = "Covid-19 Top 12 Countries by Cumulative Cases", subtitle = "Jojo Abalos", 
+      caption = "Data: Johns Hopkins University; Visuals: R/RStudio") +
+ geom_line(size = 1) +
  scale_fill_hue() +
  scale_color_hue() +
- labs(x = "Date", y = "Cumulative Cases Per Day", title = "COVID-19 CUMULATIVE CASES PER DAY - PHILIPPINES", 
-      subtitle = "As of 2020-Apr-18", caption = "Data Source: European Centre for Disease Prevention and Control (ECDC)") + 
- theme_minimal() +
- theme_pander(bc="honeydew")
+ theme_pander(bc="snow2") +
+ theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
 
-p2 <- ggplot(ECDC.COVID19.PH) +
- aes(x = dateRep, y = cases, fill = geoId, colour = geoId) +
- geom_line(size = 1L) +
- geom_smooth(span = 0.5) + 
+
+p2 <- ggplot(JHU.TOP12.SMRY) +
+ aes(x = Date, y = Confirmed, fill = Country, colour = Country) +
+ facet_wrap(vars(Country)) + 
+ labs(x = "", y = "", title = "Covid-19 Top 12 Countries by Cumulative Cases", subtitle = "Jojo Abalos", 
+      caption = "Data: Johns Hopkins University; Visuals: R/RStudio") +
+ geom_line(size=1) +
  scale_fill_hue() +
  scale_color_hue() +
- labs(x = "Date", y = "New Cases Per Day", title = "COVID-19 NEW CASES PER DAY - PHILIPPINES",
-      subtitle = "As of 2020-Apr-18", caption = "Data Source: European Centre for Disease Prevention and Control (ECDC)") + 
- theme_minimal() +
- theme_pander(bc="honeydew")
+ theme_pander(bc="snow2") +
+ theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
 ```
 
-```{r message=FALSE}
-library(plotly)
-par(mfrow=c(2,1))
-ggplotly(p1)
-ggplotly(p2)
-par(mfrow=c(1,1))
+```{r fig.height=6, fig.width=9.5, message=FALSE, echo=FALSE}
+plotly::ggplotly(p1) %>%
+  layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
+                                    '<br>',
+                                    '<sup>',
+                                    'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
+                                    '</sup>')))
+plotly::ggplotly(p2) %>%
+  layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
+                                    '<br>',
+                                    '<sup>',
+                                    'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
+                                    '</sup>')))
 ```
 
 
-```{r message=FALSE, fig.height=4, fig.width=12}
-library(cowplot)
-library(plotly)
-plot_grid(p1,p2,labels = "AUTO")
+```{r fig.height=8, fig.width=12, echo=FALSE}
+p3 <- ggplot(JHU.TOP12.SMRY) +
+ aes(x = Date, y = ConfirmedPerDay, fill = Country, colour = Country) +
+ labs(x = "", y="", title = "Covid-19 Top 12 Countries by Confirmed Cases Per Day", subtitle = "Jojo Abalos", 
+      caption = "Data: Johns Hopkins University; Visuals: R/RStudio") +
+ geom_line(size = 1) +
+ scale_fill_hue() +
+ scale_color_hue() +
+ theme_pander(bc="snow2") +
+ theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
+
+p4 <- ggplot(JHU.TOP12.SMRY) +
+ aes(x = Date, y = ConfirmedPerDay, fill = Country, colour = Country) +
+ facet_wrap(vars(Country)) + 
+ labs(x = "", y="", title = "Covid-19 Top 12 Countries by Confirmed Cases Per Day", subtitle = "Jojo Abalos", 
+      caption = "Data: Johns Hopkins University; Visuals: R/RStudio") +
+ geom_line(size=1) +
+ scale_fill_hue() +
+ scale_color_hue() +
+ theme_pander(bc="snow2") +
+ theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
 ```
+
+```{r fig.height=6, fig.width=9.5, message=FALSE, echo=FALSE}
+plotly::ggplotly(p3) %>%
+  layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
+                                    '<br>',
+                                    '<sup>',
+                                    'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
+                                    '</sup>')))
+plotly::ggplotly(p4) %>%
+  layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
+                                    '<br>',
+                                    '<sup>',
+                                    'Data from Johns Hopkins University; Visuals using R/RStudio/Plotly; R Scripts by Jojo Abalos',
+                                    '</sup>')))
+```
+
+
+
