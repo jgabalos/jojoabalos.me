@@ -22,6 +22,23 @@ image:
 projects: []
 ---
 
+The plots below are created using the COVID-19 dataset published and updated daily by Johns Hopkins University on COVID-19 cases worldwide. Feel free to play around with the interactive plots below. You may be able to find some interesting insights on how each of these countries are affected and how they are faring in relation to others.
+
+You can find various interactive tools at the top right-hand side of each graph:
+
+  1)  Download plot as png - Saves a copy of the current view of the graph in .png format
+  2)  Zoom - Select a portion of the graph to zoom in.
+  3)  Pan - Use the cursor to pan or view different sections of the graph.
+  4)  Zoom in/Zoom out - to incrementally zoom-in/out using pre-set magnification steps.
+  5)  Autoscale - reverts back to the original scale of the graph.
+  6)  Reset Axes - reverts back to original axes range of the graph.
+  7)  Toggle Spike Lines - draws both vertical and horizontal dotted lines pointing to the x and y values of the datapoint on which the cursor lies.
+  8)  Show Closest Data on Hover - shows the value and attributes of the datapoint closest to the cursor.
+  9)  Compare Data on Hover - shows the value and attributes of the datapoint nearest to the cursor and all other corresponding data points of all trend lines that sits on the same x-axis value.
+  10)  Click on the Name of Each Country on the Legend Section to active/deactive each line trend.  Use autoscale for optimized viewing of the chart based on currently active Countries.
+  
+
+
 ```{r echo=FALSE, message=FALSE,warning=FALSE}
 # these libraries need to be loaded
 library(utils)
@@ -59,11 +76,6 @@ JHU.TOP12.SMRY <- JHU %>%
          RecoveryRatePct = Recovered/Confirmed*100) 
 ```
 
-
-The plots below are created using the datasets published and updated daily by Johns Hopkins University on COVID-19 cases worldwide.  Feel free to play around with the interactive plots below of the Top12 Countries with the most number of cumulative confirmend cases of COVID-19 to date.  You may be able to find some interesting insights on how each of these countries are affected.
-
-
-
 ***
 
 ```{r echo=FALSE}
@@ -80,7 +92,7 @@ p1 <- ggplot(JHU.TOP12.SMRY) +
 
 
 
-```{r fig.width=8, fig.height=5, message=FALSE, echo=FALSE}
+```{r fig.width=7, fig.height=5, message=FALSE, echo=FALSE}
 plotly::ggplotly(p1) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
@@ -105,7 +117,7 @@ p2 <- ggplot(JHU.TOP12.SMRY) +
 ```
 
 
-```{r fig.width=8, fig.height=5, message=FALSE, echo=FALSE}
+```{r fig.width=7, fig.height=5, message=FALSE, echo=FALSE}
 plotly::ggplotly(p2) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
@@ -128,7 +140,7 @@ p3 <- ggplot(JHU.TOP12.SMRY) +
  theme(plot.margin=unit(c(1.5,0,0,0),"cm"))
 ```
 
-```{r fig.width=8, fig.height=5, message=FALSE, echo=FALSE}
+```{r fig.width=7, fig.height=5, message=FALSE, echo=FALSE}
 plotly::ggplotly(p3) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
@@ -153,7 +165,7 @@ p4 <- ggplot(JHU.TOP12.SMRY) +
 ```
 
 
-```{r fig.width=8, fig.height=5, message=FALSE, echo=FALSE}
+```{r fig.width=7, fig.height=5, message=FALSE, echo=FALSE}
 plotly::ggplotly(p4) %>%
   layout(title = list(text = paste0('Covid-19 Top 12 Countries by Cumulative Cases',
                                     '<br>',
